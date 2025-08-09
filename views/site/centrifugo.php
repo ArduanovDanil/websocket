@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
     const container = document.getElementById('counter');
 
     const centrifuge = new Centrifuge("ws://localhost:8000/connection/websocket", {
-      token: "AbL956IRfHaqWjqeUAsPj5DeeavBdz05FAk8pJyAMcKskXkWyJmiCybmGuTmy4krFJGElj5JAED5l3ejZ31jbA"
+      token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM3MjIiLCJleHAiOjE3NTUzNDY3MDcsImlhdCI6MTc1NDc0MTkwN30.yIofRZEpHxYc1PE7gRsCa9BFjtluGKo7aNgiLsL77L0"
     });
 
     centrifuge.on('connecting', function (ctx) {
