@@ -3,7 +3,7 @@
     "token": {
       "hmac_secret_key": "AbL956IRfHaqWjqeUAsPj5DeeavBdz05FAk8pJyAMcKskXkWyJmiCybmGuTmy4krFJGElj5JAED5l3ejZ31jbA"
     },
-    "allowed_origins": []
+    "allowed_origins": ["http://127.0.0.1:8080"]
   },
   "admin": {
     "enabled": true,
