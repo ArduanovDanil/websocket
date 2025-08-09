@@ -36,7 +36,13 @@ class Handler implements WebsocketClientHandler
 
                 $this->gateway->addClient($client);
 
-                
+                $redis = createRedisClient('redis://');
+
+                $redis->set('foo', '21');
+                $result = $redis->increment('foo', 21);
+
+
+                $this->logger->info($result);
                 
                 foreach ($client as $message) {
 
