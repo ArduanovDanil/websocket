@@ -7,13 +7,7 @@
     "token": {
       "hmac_secret_key": "AbL956IRfHaqWjqeUAsPj5DeeavBdz05FAk8pJyAMcKskXkWyJmiCybmGuTmy4krFJGElj5JAED5l3ejZ31jbA"
     },
-    "allowed_origins": ["http://127.0.0.1:8080", "http://127.0.0.1:8000"],
-    "proxy": {
-      "connect": {
-        "enabled": true,
-        "endpoint": "http://127.0.0.1:8080/centrifugo/connect"
-      }
-    }
+    "allowed_origins": ["http://127.0.0.1:8080", "http://127.0.0.1:8000"]
   },
   "admin": {
     "enabled": true,
@@ -24,8 +18,13 @@
     "key": "VB1zjjkDpjbKPCWd0lcGzq5c2t_zTgbGdd-0kZan06AG3T8OV4JOAPF_OvPzuj7YwuYccXbo8qM9XR4ABnB8zQ"
   },
   "channel": {
-  "without_namespace": {
-    "allow_subscribe_for_client": true
+    "proxy": {
+      "subscribe": {
+        "endpoint": "http://127.0.0.1:8080/centrifugo/connect"
+      }
+    },
+    "without_namespace": {
+      "subscribe_proxy_enabled": true
     }
   }
 }
