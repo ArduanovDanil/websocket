@@ -10,9 +10,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div id="counter">-</div>
   <script src="https://unpkg.com/centrifuge@5.2.2/dist/centrifuge.js"></script>
   <script type="text/javascript">
+    console.log('Test message')
     const container = document.getElementById('counter');
 
-    const centrifuge = new Centrifuge("ws://localhost:8000/connection/websocket", {
+    const centrifuge = new Centrifuge("ws://localhost:9000/connection/websocket", {
       token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM3MjIiLCJleHAiOjE3NTUzNDY3MDcsImlhdCI6MTc1NDc0MTkwN30.yIofRZEpHxYc1PE7gRsCa9BFjtluGKo7aNgiLsL77L0"
     });
 
@@ -24,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
       console.log(`disconnected: ${ctx.code}, ${ctx.reason}`);
     }).connect();
 
-    const sub = centrifuge.newSubscription("channel");
+    const sub = centrifuge.newSubscription("test_channel");
 
     sub.on('publication', function (ctx) {
       container.innerHTML = ctx.data.value;
