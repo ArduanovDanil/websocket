@@ -1,9 +1,19 @@
 {
+  "http_server": {
+      "port": "9000"
+    },
   "client": {
+    
     "token": {
       "hmac_secret_key": "AbL956IRfHaqWjqeUAsPj5DeeavBdz05FAk8pJyAMcKskXkWyJmiCybmGuTmy4krFJGElj5JAED5l3ejZ31jbA"
     },
-    "allowed_origins": ["http://127.0.0.1:8080"]
+    "allowed_origins": ["http://127.0.0.1:8080", "http://127.0.0.1:8000"],
+    "proxy": {
+      "connect": {
+        "enabled": true,
+        "endpoint": "http://127.0.0.1:8080/centrifugo/connect"
+      }
+    }
   },
   "admin": {
     "enabled": true,
