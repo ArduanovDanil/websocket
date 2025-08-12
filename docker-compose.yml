@@ -1,0 +1,38 @@
+services:
+  php:
+    image: yiisoftware/yii2-php:8.4-apache
+    volumes:
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/app:delegated
+    ports:
+      - '8000:80'
+    depends_on:
+      - pgsql
+
+  centrifugo:
+    image: centrifugo/centrifugo:v6.2
+    container_name: centrifugo
+    volumes:
+      - ./centrifugo/config.json:/centrifugo/config.json
+    command: centrifugo -c config.json
+    ports:
+      - 9000:9000
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+
+  pgsql:
+    image: postgres:16
+    environment:
+      - POSTGRES_DB=yii2
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5433:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d yii2"]
+      interval: 1s
+      timeout: 30s
+      retries: 5
+      start_period: 30s

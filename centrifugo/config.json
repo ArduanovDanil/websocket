@@ -1,0 +1,33 @@
+{
+  "http_server": {
+      "port": "9000"
+    },
+  "client": {
+    
+    "token": {
+      "hmac_secret_key": "AbL956IRfHaqWjqeUAsPj5DeeavBdz05FAk8pJyAMcKskXkWyJmiCybmGuTmy4krFJGElj5JAED5l3ejZ31jbA"
+    },
+    "allowed_origins": ["*"]
+  },
+  "admin": {
+    "enabled": true,
+    "password": "QNmueHj84DaAJQEqx4ysWQ",
+    "secret": "EK3K7cv85eUO-aGHgAJ2YF9g_mNZCavRrkaXWrvGFD819tAnNcDyKquvAGrNIiXrtXF_-c8q__ERHPF0pScYKg"
+  },
+  "http_api": {
+    "key": "VB1zjjkDpjbKPCWd0lcGzq5c2t_zTgbGdd-0kZan06AG3T8OV4JOAPF_OvPzuj7YwuYccXbo8qM9XR4ABnB8zQ"
+  },
+  "channel": {
+    "proxy": {
+      "subscribe": {
+        "endpoint": "http://php:80/centrifugo/connect",
+        "http_headers": [
+          "User-Agent"
+        ]
+      }
+    },
+    "without_namespace": {
+      "subscribe_proxy_enabled": true
+    }
+  }
+}
