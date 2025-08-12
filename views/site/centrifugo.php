@@ -13,8 +13,10 @@ $this->params['breadcrumbs'][] = $this->title;
     console.log('Test message')
     const container = document.getElementById('counter');
 
+    // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM3MjIiLCJleHAiOjE3NTUzNDY3MDcsImlhdCI6MTc1NDc0MTkwN30.yIofRZEpHxYc1PE7gRsCa9BFjtluGKo7aNgiLsL77L0
+    // eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIn0.iGjP4pTz7khXDL3M65_phr9IvB_9lTiNsdbVCuRYhV8
     const centrifuge = new Centrifuge("ws://localhost:9000/connection/websocket", {
-      token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM3MjIiLCJleHAiOjE3NTUzNDY3MDcsImlhdCI6MTc1NDc0MTkwN30.yIofRZEpHxYc1PE7gRsCa9BFjtluGKo7aNgiLsL77L0"
+      token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIn0.iGjP4pTz7khXDL3M65_phr9IvB_9lTiNsdbVCuRYhV8"
     });
 
     centrifuge.on('connecting', function (ctx) {

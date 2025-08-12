@@ -30,4 +30,25 @@ class CentrifugoController extends Controller
         ];
     }
 
+    public function actionGenerateJwt()
+    {
+        $secretKey = 'AbL956IRfHaqWjqeUAsPj5DeeavBdz05FAk8pJyAMcKskXkWyJmiCybmGuTmy4krFJGElj5JAED5l3ejZ31jbA';
+        $apiKey = 'VB1zjjkDpjbKPCWd0lcGzq5c2t_zTgbGdd-0kZan06AG3T8OV4JOAPF_OvPzuj7YwuYccXbo8qM9XR4ABnB8zQ';
+        $userId = 1;
+
+        //var_dump(333);
+        //die;
+        $client = new \phpcent\Client("http://localhost:9000/api");
+        $client->setApiKey($apiKey);
+        $client->publish("channel", ["message" => "Hello World"]);
+
+        $token = $client->setSecret($secretKey)->generateConnectionToken($userId);
+
+
+        return [
+            'test' => 333,
+            'token' => $token,
+        ];
+    }
+
 }
