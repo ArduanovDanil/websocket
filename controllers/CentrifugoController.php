@@ -3,26 +3,31 @@
 namespace app\controllers;
 
 use Yii;
-use yii\web\Controller;
+use yii\rest\Controller;
 
 class CentrifugoController extends Controller
 {
+
+    protected function verbs()
+    {
+        return [
+             'connect' => ['POST'],
+        ];
+    }
+
     /**
-     * Displays homepage.
+     * Displays about page.
      *
      * @return string
      */
     public function actionConnect()
     {
-        Yii::error('Error message from CentrifugoController');
-        var_dump(123);
-     
-        die;
-        return $this->render('index');
+        $params = Yii::$app->getRequest()->getBodyParams();
+        Yii::error(print_r($params, true));
+        //var_dump($params);
+        return [
+            "test" => 123
+        ];
     }
 
-    public function actionCentrifugo()
-    {
-        return $this->render('centrifugo');
-    }
 }
