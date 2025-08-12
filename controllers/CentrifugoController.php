@@ -38,7 +38,7 @@ class CentrifugoController extends Controller
 
         //var_dump(333);
         //die;
-        $client = new \phpcent\Client("http://localhost:9000/api");
+        $client = new \phpcent\Client("http://centrifugo:9000/api");
         $client->setApiKey($apiKey);
         $client->publish("channel", ["message" => "Hello World"]);
 

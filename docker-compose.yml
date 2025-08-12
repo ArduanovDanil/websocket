@@ -7,3 +7,24 @@ services:
       - ./:/app:delegated
     ports:
       - '8000:80'
+    networks:
+      - app
+
+  centrifugo:
+    image: centrifugo/centrifugo:v6.2
+    container_name: centrifugo
+    volumes:
+      - ./centrifugo/config.json:/centrifugo/config.json
+    command: centrifugo -c config.json
+    ports:
+      - 9000:9000
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+    networks:
+      - app
+
+    
+networks:
+  app:
