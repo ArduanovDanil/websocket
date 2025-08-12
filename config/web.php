@@ -26,6 +26,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+            'on afterLogin' => ['app\events\AfterLoginEvent', 'generateJwtToken'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

@@ -20,7 +20,10 @@
   "channel": {
     "proxy": {
       "subscribe": {
-        "endpoint": "http://php:80/centrifugo/connect"
+        "endpoint": "http://php:80/centrifugo/connect",
+        "http_headers": [
+          "User-Agent"
+        ]
       }
     },
     "without_namespace": {

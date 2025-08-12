@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use DateTime;
 use Yii;
 use yii\rest\Controller;
 
@@ -22,33 +23,28 @@ class CentrifugoController extends Controller
      */
     public function actionConnect()
     {
-        $params = Yii::$app->getRequest()->getBodyParams();
-        Yii::error(print_r($params, true));
-        //var_dump($params);
-        return [
-            "test" => 123
-        ];
-    }
+        $request = Yii::$app->getRequest();
+        $headers = $request->getHeaders();
 
-    public function actionGenerateJwt()
-    {
-        $secretKey = 'AbL956IRfHaqWjqeUAsPj5DeeavBdz05FAk8pJyAMcKskXkWyJmiCybmGuTmy4krFJGElj5JAED5l3ejZ31jbA';
-        $apiKey = 'VB1zjjkDpjbKPCWd0lcGzq5c2t_zTgbGdd-0kZan06AG3T8OV4JOAPF_OvPzuj7YwuYccXbo8qM9XR4ABnB8zQ';
-        $userId = 1;
+        $userAgent = $headers['user-agent'];
 
-        //var_dump(333);
-        //die;
-        $client = new \phpcent\Client("http://centrifugo:9000/api");
-        $client->setApiKey($apiKey);
-        $client->publish("test_channel", ["message" => "Hello World"]);
-
-        $token = $client->setSecret($secretKey)->generateConnectionToken($userId);
-
+        $time = new DateTime();
+        $date = $time->format('Y-m-d H:i:s');
+        $userId = $request->getBodyParam('user');
+        
+        $db = Yii::$app->db;
+        $db->createCommand()->insert('connections', [
+            'centrifugo_user_id' => $request->getBodyParam('client'),
+            'user_agent' => $userAgent,
+            'timestamp' => $date,
+            'user_id' => $userId,
+        ])->execute();
 
         return [
-            'test' => 333,
-            'token' => $token,
+            "user" => $userId
         ];
+
+
     }
 
 }
